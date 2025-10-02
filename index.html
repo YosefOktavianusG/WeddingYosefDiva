@@ -38,7 +38,7 @@
       <main>
         <h1>Yosef<br />&<br />Diva</h1>
         <br /><br /><br /><br />
-        <h4>Dear</br>X</h4>
+        <h4>Dear</br><span>X</span></h4>
         <div class="simply-countdown"></div>
         <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()">Open Invitation</a>
       </main>
@@ -82,6 +82,7 @@
               <div class="col-4">
                 <img
                   src="img/groom.JPG"
+                  height="200px"
                   alt="Yosef Oktavianus Gunawan"
                   class="img-responsive rounded-circle"
                 />
@@ -93,13 +94,14 @@
             <div class="row">
               <div class="col-4">
                 <img
-                  src="img/groom-bride.jpg"
+                  src="img/bride.jpg"
+                  height="200px"
                   alt="Laurensia Diva"
                   class="img-responsive rounded-circle"
                 />
               </div>
               <div class="col-8">
-                <h3>Laurensia Diva</h3>
+                <h3>Rebecca Laurensia Diva</h3>
                 <p>
                   Eldest Daughter of<br />
                   Mr. Subiyanto Halim <br />
@@ -118,17 +120,6 @@
         <div class="row justify-content-center">
           <div class="col-md-8 col-10 text-center">
             <h2>Wedding Day</h2>
-            <!-- <p class="address">
-              Alamat : Royal Dynasty Restaurant <br />
-              Gedung Graha Sudirman, Jl. Jend. Sudirman No.232A Lt.1, Kb. Jeruk, Kec. Andir, Kota Bandung, Jawa Barat 40181
-            </p> -->
-
-            <!-- <a
-              href="https://maps.app.goo.gl/bNi9dvvvCuMhRDwKA"
-              target="_blank"
-              class="btn btn-light btn-sm my-3"
-              >Klik Untuk Membuka Peta</a
-            > -->
             <p class="description">
               Warmly request the honor of your presence to rejoice and celebrate with us as we place our love and future in His hands.
             </p>
@@ -138,44 +129,56 @@
         <div class="row justify-content-center mt-4">
           <div class="col-md-5 col-10">
             <div class="card text-center text-bg-light mb-5">
-              <h5 class="card-header">Pemberkatan</h5>
+              <h5 class="card-header">Holy Matrimony</h5>
               <div class="card-body">
                 <div class="row justify-content-center">
                   <div class="col-md-6">
                     <i class="bi bi-clock d-block"></i>
-                    <span>09.00 - 11.00</span>
+                    <span>09.00 - End</span>
                   </div>
                   <div class="col-md-6">
                     <i class="bi bi-calendar3 d-block"></i>
-                    <span>Sabtu, 30 Mei 2026</span>
+                    <span>Saturday, 30 May 2026</span>
                   </div>
                 </div>
               </div>
               <div class="card-footer">
-                Saat acara pemberkatan diharapkan untuk kondusif menjaga
-                kekhidmatan dan kekhusyuan seluruh prosesi
+                Youth Revival Bandung <br />
+                Jalan Windu <br/>
+                <a
+                  href="https://maps.app.goo.gl/2ryBN5x57cqD4ToP7"
+                  target="_blank"
+                  class="btn btn-light btn-sm my-3"
+                  >Open Maps</a
+                >
               </div>
             </div>
           </div>
 
           <div class="col-md-5 col-10">
             <div class="card text-center text-bg-light">
-              <h5 class="card-header">Resepsi</h5>
+              <h5 class="card-header">Reception</h5>
               <div class="card-body">
                 <div class="row justify-content-center">
                   <div class="col-md-6">
                     <i class="bi bi-clock d-block"></i>
-                    <span>18.00 - Selesai</span>
+                    <span>18.00 - End</span>
                   </div>
                   <div class="col-md-6">
                     <i class="bi bi-calendar3 d-block"></i>
-                    <span>Sabtu, 30 Mei 2026</span>
+                    <span>Saturday, 30 May 2026</span>
                   </div>
                 </div>
               </div>
               <div class="card-footer">
-                Saat acara resepsi diharapkan untuk kondusif menjaga kekhidmatan
-                dan kekhusyuan seluruh prosesi
+                Royal Dynasty Restaurant <br />
+                Gedung Graha Sudirman, Jl. Jend. Sudirman No.232A Lt.1, Kb. Jeruk, Kec. Andir, Kota Bandung, Jawa Barat 40181 <br />
+                <a
+                  href="https://maps.app.goo.gl/VTuQcFMotbfvXp2X8"
+                  target="_blank"
+                  class="btn btn-light btn-sm my-3"
+                  >Open Maps</a
+                >
               </div>
             </div>
           </div>
@@ -300,40 +303,54 @@
         >
           <div class="col-12">
             <div class="mb-3">
-              <label for="nama" class="form-label">Nama</label>
+              <label for="nama" class="form-label">Name</label>
               <input type="text" class="form-control" id="nama" name="nama" />
             </div>
           </div>
 
           <div class="col-12">
             <div class="mb-3">
-              <label for="jumlah" class="form-label">Jumlah</label>
-              <input
-                type="number"
-                class="form-control"
-                id="jumlah"
-                name="jumlah"
-                min="1"
-                max="5"
-                length="1"
-                value="1"
-              />
+              <label for="guest" class="form-label">Number Of Guest</label>
+              <select name="guest" id="guest" class="form-select">
+                <option selected value="">Number Of Guest</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
             </div>
           </div>
 
           <div class="col-12">
             <div class="mb-3">
-              <label for="jumlah" class="form-label">Konfirmasi</label>
+              <label for="attendance" class="form-label">Confirmation Of Attendance</label>
               <select name="status" id="status" class="form-select">
-                <option selected value="">Pilih salah satu</option>
-                <option value="Hadir">Hadir</option>
-                <option value="Tidak Hadir">Tidak Hadir</option>
+                <option selected value="">Confirmation Of Attendance</option>
+                <option value="Hadir">Attend</option>
+                <option value="Not Attend">Not Attend</option>
               </select>
             </div>
           </div>
 
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="jumlah" class="form-label">Event</label>
+              <select name="status" id="status" class="form-select">
+                <option selected value="">Event</option>
+                <option value="Holy Matrimony">Holy Matrimony</option>
+                <option value="Reception">Reception</option>
+                <option value="Attend All">Attend All</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="wishes" class="form-label">Write Your Wishes</label>
+              <textarea class="form-control" id="wishes" name="wishes" rows="5"></textarea>
+            </div>
+          </div>
+
           <div class="col-12" style="margin-top: 35px">
-            <button class="btn btn-primary">Kirim</button>
+            <button class="btn btn-primary">Send</button>
           </div>
         </form>
       </div>
@@ -407,9 +424,14 @@
     </footer>
 
     <div id="audio-container">
-      <!-- <audio id="bg-music" autoplay loop>
+      <audio 
+        id="bg-music" 
+        loop 
+        oncontextmenu="return false;" 
+        controlsList="nodownload nofullscreen"
+      >
         <source src="music/The Moment.mp3" type="audio/mp3" />
-      </audio> -->
+      </audio>
 
       <div class="audio-icon-wrapper" style="display: none">
         <i class="bi bi-disc"></i>
@@ -497,16 +519,16 @@
       function playAudio() {
         audioIconWrapper.style.display = "flex";
         isPLaying = true;
-        // bgMusic.play();
+        bgMusic.play();
       }
 
       audioIconWrapper.onclick = function () {
         if (isPLaying) {
-          // bgMusic.pause();
+          bgMusic.pause();
           audioIcon.classList.remove("bi-disc");
           audioIcon.classList.add("bi-pause-circle");
         } else {
-          // bgMusic.play();
+          bgMusic.play();
           audioIcon.classList.remove("bi-pause-circle");
           audioIcon.classList.add("bi-disc");
         }
@@ -518,6 +540,13 @@
       //  disableScroll();
       // }
       disableScroll();
+
+      // tambahan: cegah klik kanan di area halaman (opsional)
+      document.addEventListener('contextmenu', function(e){
+        // jika ingin hanya blok klik kanan di atas audio:
+        if (e.target.closest('audio')) e.preventDefault();
+        // untuk blok seluruh halaman, pakai: e.preventDefault();
+      });
     </script>
 
     <!-- Script Form RSVP -->
@@ -539,11 +568,10 @@
     <!-- Script Nama -->
     <script>
       const urlParams = new URLSearchParams(window.location.search);
-      const pronoun = urlParams.get("p") || "Dear";
       const name = urlParams.get("n") || "";
 
-      const nameContainer = document.querySelector(".landing h4 span");
-      nameContainer.innerText = `${pronoun} ${name}`.replace(/ , $/, ",");
+      const nameContainer = document.querySelector(".landing main h4 span");
+      nameContainer.innerText = `${name}`.replace(/ , $/, ",");
 
       document.querySelector("#nama").value = name;
     </script>

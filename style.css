@@ -62,7 +62,6 @@ body {
 
 .home {
   background-image: url(img/gallery-x.JPG);
-  background-size: cover;
   background-position: center;
   min-height: 100vh;
   padding-bottom: 5rem;
@@ -77,7 +76,6 @@ body {
 
 .groom-bride h2,
 .info h2,
-.story h2,
 .gallery h2,
 .rsvp h2,
 .gifts h2 {
@@ -89,8 +87,6 @@ body {
 
 .groom-bride {
   color: white;
-  padding-top: 10rem;
-  padding-bottom: 8rem;
 }
 
 .groom-bride h3 {
@@ -123,8 +119,6 @@ body {
 .info {
   background-color: var(--color-primary);
   color: white;
-  padding-top: 10rem;
-  padding-bottom: 8rem;
 }
 
 .info .address {
@@ -158,15 +152,15 @@ body {
   border-bottom: 1px solid #999;
 }
 
-.story,
+.groom-bride,
+.info,
 .gallery,
 .rsvp,
 .gifts {
-  padding-top: 10rem;
+  padding-top: 5rem;
   padding-bottom: 8rem;
 }
 
-.story span,
 .gallery span,
 .gifts span {
   text-transform: uppercase;
@@ -177,7 +171,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.story p,
 .gallery p,
 .rsvp p,
 .gifts p {
@@ -191,6 +184,7 @@ body {
 
 .rsvp {
   background-color: var(--color-primary);
+  font-family: "Montserrat";
 }
 
 .rsvp h2 {
