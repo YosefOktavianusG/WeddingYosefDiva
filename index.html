@@ -17,10 +17,18 @@
       href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Light Gallery -->
+    <link type="text/css" rel="stylesheet" href="css/lightgallery-bundle.css" />
+    <script src="js/lightgallery.umd.js"></script>
+
+    <!-- lightgallery plugins -->
+    <script src="js/plugins/lg-thumbnail.umd.js"></script>
+    <script src="js/plugins/lg-zoom.umd.js"></script>
     
     <!-- SimplyCountdown -->
     <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css" />
-    <script src="countdown/simplyCountdown.min.js"></script>
+    <script src="countdown/simplyCountdown.js"></script>
 
     <!-- Bootstrap Icons -->
     <link
@@ -39,7 +47,6 @@
         <h1>Yosef<br />&<br />Diva</h1>
         <br /><br /><br /><br />
         <h4>Dear</br><span>X</span></h4>
-        <div class="simply-countdown"></div>
         <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()">Open Invitation</a>
       </main>
     </section>
@@ -47,7 +54,7 @@
     <section id="home" class="home d-flex flex-column">
       <div class="container d-flex flex-column flex-grow-1">
         <div class="row justify-content-center align-items-end flex-grow-1">
-          <div class="col-md-8 text-center text-white p-3" style="background-color: rgba(0,0,0,0.5); border-radius: 10px;">
+          <div class="col-md-8 text-center text-white p-3">
             <h3>
               So then, they are no longer two but one flesh. 
               <br>
@@ -94,7 +101,7 @@
             <div class="row">
               <div class="col-4">
                 <img
-                  src="img/bride.jpg"
+                  src="img/bride.JPG"
                   height="200px"
                   alt="Laurensia Diva"
                   class="img-responsive rounded-circle"
@@ -125,7 +132,7 @@
             </p>
           </div>
         </div>
-
+        <div class="my-countdown simply-countdown"></div>
         <div class="row justify-content-center mt-4">
           <div class="col-md-5 col-10">
             <div class="card text-center text-bg-light mb-5">
@@ -149,7 +156,7 @@
                   href="https://maps.app.goo.gl/2ryBN5x57cqD4ToP7"
                   target="_blank"
                   class="btn btn-light btn-sm my-3"
-                  >Open Maps</a
+                  >View Maps</a
                 >
               </div>
             </div>
@@ -177,7 +184,7 @@
                   href="https://maps.app.goo.gl/VTuQcFMotbfvXp2X8"
                   target="_blank"
                   class="btn btn-light btn-sm my-3"
-                  >Open Maps</a
+                  >View Maps</a
                 >
               </div>
             </div>
@@ -197,6 +204,33 @@
         <div
           class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 justify-content-center"
         >
+          <!-- <div id="lightgallery">
+            <a
+              href="img/gallery-1.JPG"
+              data-toggle="lightbox"
+              data-caption="This describes the image"
+              data-gallery="mygallery"
+            >
+              <img
+                src="img/gallery-1.JPG"
+                alt=""
+                class="img-fluid w-100 rounded"
+              />
+            </a>
+
+            <a
+              href="img/gallery-2.JPG"
+              data-toggle="lightbox"
+              data-caption="This describes the image"
+              data-gallery="mygallery"
+            >
+              <img
+                src="img/gallery-2.JPG"
+                alt=""
+                class="img-fluid w-100 rounded"
+              />
+            </a>
+          </div> -->
           <div class="col mt-3">
             <a
               href="img/gallery-1.JPG"
@@ -448,10 +482,10 @@
 
     <!-- Script Countdown -->
     <script>
-      simplyCountdown(".simply-countdown", {
+      simplyCountdown(".my-countdown", {
         year: 2026, // Target year (required)
-        month: 12, // Target month [1-12] (required)
-        day: 19, // Target day [1-31] (required)
+        month: 5, // Target month [1-12] (required)
+        day: 30, // Target day [1-31] (required)
         hours: 0, // Target hour [0-23], default: 0
         minutes: 0, // Target minute [0-59], default: 0
         seconds: 0, // Target second [0-59], default: 0
@@ -488,6 +522,15 @@
         removeZeroUnits: false, // Remove units with zero value
         countUp: false, // Count up after reaching zero
       });
+    </script>
+
+    <!-- Light Gallery -->
+    <script type="text/javascript">
+        lightGallery(document.getElementById('lightgallery'), {
+            plugins: [lgZoom, lgThumbnail],
+            speed: 500,
+            licenseKey: 'your_license_key'
+        });
     </script>
 
     <script>
