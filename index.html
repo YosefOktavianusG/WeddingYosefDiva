@@ -83,12 +83,12 @@
                 </p>
               </div>
               <div class="col-4">
-                <img
-                  src="img/groom.JPG"
-                  height="200px"
-                  alt="Yosef Oktavianus Gunawan"
-                  class="img-responsive rounded-circle"
-                />
+                <a
+                  href="img/groom.JPG"
+                  data-title="Foto 1"
+                >
+                  <img src="img/groom.JPG" alt="Groom" loading="lazy">
+                </a>
               </div>
             </div>
           </div>
@@ -96,12 +96,12 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-4">
-                <img
-                  src="img/bride.JPG"
-                  height="200px"
-                  alt="Laurensia Diva"
-                  class="img-responsive rounded-circle"
-                />
+                <a
+                  href="img/bride.JPG"
+                  data-title="Foto 1"
+                >
+                  <img src="img/bride.JPG" alt="Bride" loading="lazy">
+                </a>
               </div>
               <div class="col-8">
                 <h3>Rebecca Laurensia Diva</h3>
@@ -210,6 +210,10 @@
               <img id="main-photo" src="img/gallery-1.JPG" alt="Foto 1" loading="lazy">
             </a>
 
+            <!-- Tombol navigasi -->
+            <button class="nav-btn prev-btn" id="prevBtn">&#10094;</button>
+            <button class="nav-btn next-btn" id="nextBtn">&#10095;</button>
+
             <a href="img/gallery-2.JPG" data-lightbox="wedding-gallery" data-title="Foto 2" style="display:none;"></a>
             <a href="img/gallery-3.JPG" data-lightbox="wedding-gallery" data-title="Foto 3" style="display:none;"></a>
             <a href="img/gallery-4.JPG" data-lightbox="wedding-gallery" data-title="Foto 4" style="display:none;"></a>
@@ -232,60 +236,72 @@
 
         <form
           id="my-form"
-          class="row row-cols-md-auto g-3 align-items-center justify-content-center"
+          class="row g-3 justify-content-center"
           method="POST"
           action="https://script.google.com/macros/s/AKfycbwQUt1hFsYWMLcIM37CcEUWa_V0M4LvS_gfWTXqbKDqiEqFSfiRPcRBaYpJjswq_ro/exec"
         >
-          <div class="col-12">
-            <div class="mb-3">
-              <label for="nama" class="form-label">Name</label>
-              <input type="text" class="form-control" id="nama" name="nama" />
+          <div class="row">
+            <div class="col-12 col-md-6 mx-auto">
+              <div class="mb-3">
+                <label for="nama" class="form-label">Name</label>
+                <input type="text" class="form-control" id="nama" name="nama" />
+              </div>
             </div>
           </div>
 
-          <div class="col-12">
-            <div class="mb-3">
-              <label for="guest" class="form-label">Number Of Guest</label>
-              <select name="guest" id="guest" class="form-select">
-                <option selected value="">Number Of Guest</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
+          <div class="row">
+            <div class="col-12 col-md-6 mx-auto">
+              <div class="mb-3">
+                <label for="guest" class="form-label">Number Of Guest</label>
+                <select name="guest" id="guest" class="form-select">
+                  <option selected value="">Number Of Guest</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <div class="col-12">
-            <div class="mb-3">
-              <label for="attendance" class="form-label">Confirmation Of Attendance</label>
-              <select name="status" id="status" class="form-select">
-                <option selected value="">Confirmation Of Attendance</option>
-                <option value="Hadir">Attend</option>
-                <option value="Not Attend">Not Attend</option>
-              </select>
+          <div class="row">
+            <div class="col-12 col-md-6 mx-auto">
+              <div class="mb-3">
+                <label for="attendance" class="form-label">Confirmation Of Attendance</label>
+                <select name="status" id="status" class="form-select">
+                  <option selected value="">Confirmation Of Attendance</option>
+                  <option value="Hadir">Attend</option>
+                  <option value="Not Attend">Not Attend</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <div class="col-12">
-            <div class="mb-3">
-              <label for="jumlah" class="form-label">Event</label>
-              <select name="status" id="status" class="form-select">
-                <option selected value="">Event</option>
-                <option value="Holy Matrimony">Holy Matrimony</option>
-                <option value="Reception">Reception</option>
-                <option value="Attend All">Attend All</option>
-              </select>
+          <div class="row">
+            <div class="col-12 col-md-6 mx-auto">
+              <div class="mb-3">
+                <label for="jumlah" class="form-label">Event</label>
+                <select name="status" id="status" class="form-select">
+                  <option selected value="">Event</option>
+                  <option value="Holy Matrimony">Holy Matrimony</option>
+                  <option value="Reception">Reception</option>
+                  <option value="Attend All">Attend All</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <div class="col-12">
-            <div class="mb-3">
-              <label for="wishes" class="form-label">Write Your Wishes</label>
-              <textarea class="form-control" id="wishes" name="wishes" rows="5"></textarea>
+          <div class="row">
+            <div class="col-12 col-md-6 mx-auto">
+              <div class="mb-3">
+                <label for="wishes" class="form-label">Write Your Wishes</label>
+                <textarea class="form-control" id="wishes" name="wishes" rows="5"></textarea>
+              </div>
             </div>
           </div>
 
-          <div class="col-12" style="margin-top: 35px">
-            <button class="btn btn-primary">Send</button>
+          <div class="row">
+            <div class="col-12 col-md-6 mx-auto" style="margin-top: 35px;">
+              <button class="btn btn-primary">Send</button>
+            </div>
           </div>
         </form>
       </div>
@@ -440,18 +456,47 @@
       let index = 0;
       const mainImg = document.getElementById('main-photo');
       const mainLink = document.getElementById('main-photo-link');
+      const nextBtn = document.getElementById('nextBtn');
+      const prevBtn = document.getElementById('prevBtn');
 
-      // Ganti gambar tiap 5 detik
-      setInterval(() => {
-        index = (index + 1) % photos.length;
-        mainImg.style.opacity = 0; // animasi fade
+      function showImage(i) {
+        mainImg.style.opacity = 0;
         setTimeout(() => {
-          mainImg.src = photos[index].src;
-          mainLink.href = photos[index].link;
-          mainLink.setAttribute('data-title', photos[index].title);
+          mainImg.src = photos[i].src;
+          mainLink.href = photos[i].link;
+          mainLink.setAttribute('data-title', photos[i].title);
           mainImg.style.opacity = 1;
-        }, 800);
-      }, 5000);
+        }, 400);
+      }
+
+      function nextImage() {
+        index = (index + 1) % photos.length;
+        showImage(index);
+      }
+
+      function prevImage() {
+        index = (index - 1 + photos.length) % photos.length;
+        showImage(index);
+      }
+
+      // Event tombol
+      nextBtn.addEventListener('click', () => {
+        nextImage();
+        resetAutoSlide();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        prevImage();
+        resetAutoSlide();
+      });
+
+      // Auto-slide
+      let autoSlide = setInterval(nextImage, 5000);
+
+      function resetAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(nextImage, 5000);
+      }
     </script>
 
     <script>

@@ -183,6 +183,7 @@ body {
 }
 
 .gallery-container {
+  position: relative;
   text-align: center;
   margin-top: 30px;
 }
@@ -194,6 +195,28 @@ body {
   cursor: pointer;
   transition: opacity 0.8s ease;
 }
+
+/* Tombol next & prev */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  padding: 8px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.nav-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
 
 .rsvp {
   background-color: var(--color-primary);
