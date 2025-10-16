@@ -23,8 +23,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     
     <!-- SimplyCountdown -->
-    <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css" />
-    <script src="countdown/simplyCountdown.js"></script>
+    <link rel="stylesheet" href="/countdown/simplyCountdown.theme.default.css" />
+    <script src="/countdown/simplyCountdown.js"></script>
 
     <!-- Bootstrap Icons -->
     <link
@@ -145,7 +145,8 @@
                   </div>
                 </div>
               </div>
-              <div class="card-footer">
+              <div class="card-footer"> 
+                <br />
                 Youth Revival Bandung <br />
                 Jalan Windu <br/>
                 <a
@@ -226,7 +227,7 @@
 
     <section id="rsvp" class="rsvp">
       <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-bottom: 5rem;">
           <div class="col-md-8 col-10 text-center">
             <h2>RSVP</h2>
             <p>Please confirm your attendance before,</p>
@@ -315,8 +316,7 @@
             <p>
               Your presence and prayers are the greatest wedding gifts we could ever ask for. 
               No other gifts are needed nor expected. 
-              However, if giving is a sign of love, we are happy to receive it, and, of course, 
-              it will enhance our happiness even more.
+              However, if giving is a sign of love, we are happy to receive it, and, of course, it will enhance our happiness even more.
             </p>
           </div>
         </div>
@@ -491,14 +491,15 @@
       });
 
       // Auto-slide
-      let autoSlide = setInterval(nextImage, 5000);
+      let autoSlide = setInterval(nextImage, 3000);
 
       function resetAutoSlide() {
         clearInterval(autoSlide);
-        autoSlide = setInterval(nextImage, 5000);
+        autoSlide = setInterval(nextImage, 3000);
       }
     </script>
 
+    <!-- Script Audio -->
     <script>
       const rootElement = document.querySelector(":root");
       const bgMusic = document.querySelector("#bg-music");
