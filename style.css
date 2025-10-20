@@ -331,6 +331,8 @@ footer li {
  background: white;
  border-radius: 10px;
  transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0));
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0));
 }
 
 .shadow {
@@ -355,6 +357,18 @@ footer li {
     font-size: 75%;
   }
 
+  .groom-bride p {
+    color: #555;
+    font-size: 1.5rem;
+    font-family: "Montserrat";
+  }
+
+  .groom-bride .couple h3 {
+    color: var(--color-secondary);
+    font-family: "Alex Brush", cursive;
+    font-size: 4rem;
+  }
+
   .simply-countdown > .simply-section {
     padding: 70px;
   }
@@ -365,6 +379,19 @@ footer li {
   html {
     font-size: 65%;
   }
+
+  .groom-bride p {
+    color: #555;
+    font-size: 1.8rem;
+    font-family: "Montserrat";
+  }
+
+  .groom-bride .couple h3 {
+    color: var(--color-secondary);
+    font-family: "Alex Brush", cursive;
+    font-size: 4.4rem;
+  }
+
   .simply-countdown > .simply-section {
     padding: 60px;
     margin: 5px;
@@ -375,6 +402,18 @@ footer li {
 @media (max-width: 576px) {
   html {
     font-size: 60%;
+  }
+
+  .groom-bride p {
+    color: #555;
+    font-size: 1.8rem;
+    font-family: "Montserrat";
+  }
+
+  .groom-bride .couple h3 {
+    color: var(--color-secondary);
+    font-family: "Alex Brush", cursive;
+    font-size: 4.4rem;
   }
   
   .simply-countdown > .simply-section {
