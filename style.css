@@ -335,6 +335,32 @@ body {
   color: #555;
 }
 
+.gifts h4 {
+  color: var(--bg);
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+
+.gifts img {
+  max-width: 250px; 
+  height: auto;
+}
+
+.gifts button {
+  background-color: var(--color-secondary);
+  color: white;
+  border: 1px solid var(--color-secondary);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 12px;
+}
+
+.gifts button:hover {
+  background-color: var(--color-secondary);
+  color: white;
+  border: 1px solid var(--color-secondary);
+}
+
 footer {
   padding: 3rem;
   background-color: var(--color-secondary);
@@ -458,7 +484,11 @@ footer li {
   }
   
   .simply-countdown > .simply-section {
-    padding: 45px;
+    padding: 35px;
     margin: 3px;
+  }
+
+  .gifts img {
+    max-width: 125px;
   }
 }

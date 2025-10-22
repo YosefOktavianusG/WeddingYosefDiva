@@ -10,7 +10,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 0.25rem;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
@@ -18,12 +18,13 @@
   width: 65px;
   height: 65px;
   padding: 1.5rem;
+  /* border: 2px solid white; */
   display: flex;
   align-items: center;
   justify-content: center;
   /* background: rgba(255, 255, 255, 0.9); */
   /* border: 1px solid rgba(226, 232, 240, 0.8); */
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
   /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02); */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
@@ -48,7 +49,7 @@
 .simply-countdown > .simply-section .simply-word {
   font-size: 0.6rem;
   font-weight: 500;
-  color: #64748b;
+  color: white;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }

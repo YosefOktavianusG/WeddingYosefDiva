@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Yosef & Diva Wedding</title>
+    <link rel="icon" type="image/jpg" href="img/gallery-x.JPG">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -352,12 +353,16 @@
 
         <div class="row justify-content-center text-center">
           <div class="col-md-6">
-            <ul class="list-group">
-              <li class="list-group-item">
-                <div class="fw-bold">BCA</div>
-                1234567890 - Yosef Oktavianus & Laurensia Diva
-              </li>
-            </ul>
+            <img src="img/logo-bca.png" 
+                class="img-fluid" 
+            >
+            <h4>
+              1234567890
+            </h4>
+            <h4>
+              Yosef Oktavianus & Laurensia Diva
+            </h4>
+            <button id="button-copy" class="btn btn-primary">Copy Number</button>
           </div>
         </div>
       </div>
@@ -529,6 +534,7 @@
       }
     </script>
 
+    <!-- Script Adjust Height -->
     <script>
       function adjustHeight() {
         document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
@@ -678,5 +684,19 @@
 
       loadWishes();
     </script>
+
+    <!-- Script Copy -->
+     <script>
+      const btn = document.getElementById('button-copy');
+
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText("123456789");
+          // Umpan balik sederhana
+          alert("Copied");
+        } catch (err) {
+        }
+      });
+     </script>
   </body>
 </html>
