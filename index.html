@@ -362,7 +362,6 @@
             <h4>
               Yosef Oktavianus & Laurensia Diva
             </h4>
-            <button id="button-copy" class="btn btn-primary">Copy Number</button>
           </div>
         </div>
       </div>
@@ -684,19 +683,5 @@
 
       loadWishes();
     </script>
-
-    <!-- Script Copy -->
-     <script>
-      const btn = document.getElementById('button-copy');
-
-      btn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText("123456789");
-          // Umpan balik sederhana
-          alert("Copied");
-        } catch (err) {
-        }
-      });
-     </script>
   </body>
 </html>
