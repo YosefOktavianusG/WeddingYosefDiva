@@ -384,6 +384,12 @@ footer li {
   }
 }
 
+@supports (height: 100dvh) {
+  .landing {
+    height: 100dvh;
+  }
+}
+
 /* Media Query */
 /* Laptop */
 @media (max-width: 992px) {
