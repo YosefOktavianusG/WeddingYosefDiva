@@ -167,8 +167,8 @@
               </div>
               <div class="card-footer"> 
                 <br />
-                Youth Revival Bandung <br />
-                Jalan Windu <br/>
+                PD Ecclesia Pillar <br />
+                Jl Windu No 16 <br/>
                 <a
                   href="https://maps.app.goo.gl/2ryBN5x57cqD4ToP7"
                   target="_blank"
@@ -586,6 +586,17 @@
         // jika ingin hanya blok klik kanan di atas audio:
         if (e.target.closest('audio')) e.preventDefault();
         // untuk blok seluruh halaman, pakai: e.preventDefault();
+      });
+
+      // Ketika tab menjadi aktif
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          // Lanjutkan jika tab aktif
+          if (bgMusic.paused) bgMusic.play().catch(() => {});
+        } else {
+          // Pause jika tab tidak aktif
+          bgMusic.pause();
+        }
       });
     </script>
 
