@@ -529,6 +529,14 @@
       }
     </script>
 
+    <script>
+      function adjustHeight() {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+      }
+      window.addEventListener('resize', adjustHeight);
+      adjustHeight();
+    </script>
+
     <!-- Script Audio -->
     <script>
       const rootElement = document.querySelector(":root");
