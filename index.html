@@ -19,8 +19,15 @@
     />
 
     <!-- Light Gallery -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- CSS LightGallery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+
+    <!-- JS LightGallery -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.umd.min.js"></script>
+
+    <!-- Plugin opsional -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.umd.min.js"></script>
     
     <!-- SimplyCountdown -->
     <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css" />
@@ -74,52 +81,56 @@
         <div class="row couple">
           <div class="col-lg-6">
             <div class="row">
-              <div class="col-12">
-                <a
-                  href="img/groom.JPG"
-                  data-title="Foto 1"
-                >
-                  <img src="img/groom.JPG" 
-                        alt="Groom" 
-                        loading="lazy" 
-                        class="card-photo shadow"
-                  >
-                </a>
-              </div>
-              <div class="col-12 text-end">
-                <h3>Yosef Oktavianus Gunawan</h3>
-                <p>
-                  Son of<br />
-                  Mr. Kwa Kim Swan <br />
-                  & <br />
-                  Mrs. Tjoe Sun Kiauw
-                </p>
+              <div class="col-12 position-relative text-center">
+                <div class="photo-wrapper">
+                  <a href="img/groom.JPG" data-title="Groom">
+                    <img 
+                      src="img/groom.JPG" 
+                      alt="Groom" 
+                      loading="lazy" 
+                      class="card-photo shadow"
+                    >
+                  </a>
+                  <div class="groom-text">
+                    <h3>Yosef Oktavianus Gunawan</h3>
+                    <p>
+                      Son of<br>
+                      Mr. Kwa Kim Swan <br>
+                      & <br>
+                      Mrs. Tjoe Sun Kiauw
+                    </p>
+                    <a href="https://www.instagram.com/yosefoktavianus/"><i class="bi bi-instagram"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="row">
-              <div class="col-12">
-                <a
-                  href="img/bride.JPG"
-                  data-title="Foto 1"
-                >
-                  <img src="img/bride.JPG" 
-                        alt="Bride" 
-                        loading="lazy" 
-                        class="card-photo shadow"
+              <div class="col-12 position-relative text-center">
+                <div class="photo-wrapper">
+                  <a
+                    href="img/bride.JPG"
+                    data-title="Bride"
                   >
-                </a>
-              </div>
-              <div class="col-12">
-                <h3>Rebecca Laurensia Diva</h3>
-                <p>
-                  Eldest Daughter of<br />
-                  Mr. Subiyanto Halim <br />
-                  & <br />
-                  Mrs. Listia Hastuti
-                </p>
+                    <img src="img/bride.JPG" 
+                          alt="Bride" 
+                          loading="lazy" 
+                          class="card-photo shadow"
+                    >
+                  </a>
+                  <div class="bride-text">
+                    <h3>Rebecca Laurensia Diva</h3>
+                    <p>
+                      Eldest Daughter of<br />
+                      Mr. James Subiyanto Halim <br />
+                      & <br />
+                      Mrs. Eunike Listya Hastuti
+                    </p>
+                    <a href="https://www.instagram.com/laurensiadiva/"><i class="bi bi-instagram"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -210,7 +221,7 @@
         <div
           class="row row-cols-12 justify-content-center"
         >
-          <div class="gallery-container">
+          <div id="gallery" class="gallery-container">
             <a
               id="main-photo-link"
               href="img/gallery-1.JPG"
@@ -457,6 +468,11 @@
 
     <!-- Light Gallery -->
     <script>
+      lightGallery(document.getElementById('gallery'), {
+        plugins: [lgZoom, lgThumbnail],
+        speed: 500,
+        thumbnail: true
+      });
       // Daftar gambar
       const photos = [
         {src: 'img/gallery-1.JPG', link: 'img/gallery-1.JPG', title: 'Foto 1'},
