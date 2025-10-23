@@ -20,13 +20,14 @@
     />
 
     <!-- Light Gallery -->
-    <!-- CSS LightGallery -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css"
+    />
 
-    <!-- JS LightGallery -->
+    <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.umd.min.js"></script>
-
-    <!-- Plugin opsional -->
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.umd.min.js"></script>
     
@@ -222,11 +223,10 @@
         <div
           class="row row-cols-12 justify-content-center"
         >
-          <div id="gallery" class="gallery-container">
+          <div id="gallery-container" class="gallery-container">
             <a
               id="main-photo-link"
               href="img/gallery-1.JPG"
-              data-lightbox="wedding-gallery" 
               data-title="Foto 1"
             >
               <img id="main-photo" src="img/gallery-1.JPG" alt="Foto 1" loading="lazy">
@@ -235,12 +235,6 @@
             <!-- Tombol navigasi -->
             <button class="nav-btn prev-btn" id="prevBtn">&#10094;</button>
             <button class="nav-btn next-btn" id="nextBtn">&#10095;</button>
-
-            <a href="img/gallery-2.JPG" data-lightbox="wedding-gallery" data-title="Foto 2" style="display:none;"></a>
-            <a href="img/gallery-3.JPG" data-lightbox="wedding-gallery" data-title="Foto 3" style="display:none;"></a>
-            <a href="img/gallery-4.JPG" data-lightbox="wedding-gallery" data-title="Foto 4" style="display:none;"></a>
-            <a href="img/gallery-5.JPG" data-lightbox="wedding-gallery" data-title="Foto 5" style="display:none;"></a>
-            <a href="img/gallery-6.JPG" data-lightbox="wedding-gallery" data-title="Foto 6" style="display:none;"></a>
           </div>
         </div>
       </div>
@@ -406,8 +400,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
-
     <!-- Script Countdown -->
     <script>
       simplyCountdown(".my-countdown", {
@@ -454,19 +446,14 @@
 
     <!-- Light Gallery -->
     <script>
-      lightGallery(document.getElementById('gallery'), {
-        plugins: [lgZoom, lgThumbnail],
-        speed: 500,
-        thumbnail: true
-      });
       // Daftar gambar
       const photos = [
-        {src: 'img/gallery-1.JPG', link: 'img/gallery-1.JPG', title: 'Foto 1'},
-        {src: 'img/gallery-2.JPG', link: 'img/gallery-2.JPG', title: 'Foto 2'},
-        {src: 'img/gallery-3.JPG', link: 'img/gallery-3.JPG', title: 'Foto 3'},
-        {src: 'img/gallery-4.JPG', link: 'img/gallery-4.JPG', title: 'Foto 4'},
-        {src: 'img/gallery-5.JPG', link: 'img/gallery-5.JPG', title: 'Foto 5'},
-        {src: 'img/gallery-6.JPG', link: 'img/gallery-6.JPG', title: 'Foto 6'}
+        { src: 'img/gallery-1.JPG', thumb: 'img/gallery-1.JPG', subHtml: 'Foto 1' },
+        { src: 'img/gallery-2.JPG', thumb: 'img/gallery-2.JPG', subHtml: 'Foto 2' },
+        { src: 'img/gallery-3.JPG', thumb: 'img/gallery-3.JPG', subHtml: 'Foto 3' },
+        { src: 'img/gallery-4.JPG', thumb: 'img/gallery-4.JPG', subHtml: 'Foto 4' },
+        { src: 'img/gallery-5.JPG', thumb: 'img/gallery-5.JPG', subHtml: 'Foto 5' },
+        { src: 'img/gallery-6.JPG', thumb: 'img/gallery-6.JPG', subHtml: 'Foto 6' }
       ];
 
       let index = 0;
@@ -474,13 +461,13 @@
       const mainLink = document.getElementById('main-photo-link');
       const nextBtn = document.getElementById('nextBtn');
       const prevBtn = document.getElementById('prevBtn');
+      const galleryContainer = document.getElementById('gallery-container');
 
       function showImage(i) {
         mainImg.style.opacity = 0;
         setTimeout(() => {
           mainImg.src = photos[i].src;
-          mainLink.href = photos[i].link;
-          mainLink.setAttribute('data-title', photos[i].title);
+          mainLink.setAttribute('data-index', i);
           mainImg.style.opacity = 1;
         }, 400);
       }
@@ -496,12 +483,14 @@
       }
 
       // Event tombol
-      nextBtn.addEventListener('click', () => {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         nextImage();
         resetAutoSlide();
       });
 
-      prevBtn.addEventListener('click', () => {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         prevImage();
         resetAutoSlide();
       });
@@ -513,6 +502,26 @@
         clearInterval(autoSlide);
         autoSlide = setInterval(nextImage, 3000);
       }
+
+      let galleryInstance = null;
+      mainLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const currentIndex = parseInt(mainLink.getAttribute('data-index')) || 0;
+        
+        // Hancurkan instance sebelumnya jika masih aktif
+        if (galleryInstance) galleryInstance.destroy();
+        
+        galleryInstance = lightGallery(galleryContainer, {
+          dynamic: true,
+          dynamicEl: photos,
+          index: currentIndex,
+          plugins: [lgZoom, lgThumbnail],
+          speed: 500,
+        });
+
+        // buka langsung lightbox
+        galleryInstance.openGallery(currentIndex);
+      });
     </script>
 
     <!-- Script Adjust Height -->

@@ -260,12 +260,16 @@ body {
   transition: opacity 0.8s ease;
 }
 
+#main-photo {
+  transition: opacity 0.4s ease;
+}
+
 /* Tombol next & prev */
 .nav-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   color: #fff;
   border: none;
   font-size: 24px;
@@ -276,7 +280,7 @@ body {
 }
 
 .nav-btn:hover {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .prev-btn { left: 10px; }
