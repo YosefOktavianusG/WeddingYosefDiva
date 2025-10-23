@@ -85,14 +85,12 @@
             <div class="row">
               <div class="col-12 position-relative text-center">
                 <div class="photo-wrapper">
-                  <a href="img/groom.JPG" data-title="Groom">
-                    <img 
-                      src="img/groom.JPG" 
-                      alt="Groom" 
-                      loading="lazy" 
-                      class="card-photo shadow"
-                    >
-                  </a>
+                  <img 
+                    src="img/groom.JPG" 
+                    alt="Groom" 
+                    loading="lazy" 
+                    class="card-photo shadow"
+                  >
                   <div class="groom-text">
                     <h3>Yosef Oktavianus Gunawan</h3>
                     <p>
@@ -112,16 +110,11 @@
             <div class="row">
               <div class="col-12 position-relative text-center">
                 <div class="photo-wrapper">
-                  <a
-                    href="img/bride.JPG"
-                    data-title="Bride"
+                  <img src="img/bride.JPG" 
+                        alt="Bride" 
+                        loading="lazy" 
+                        class="card-photo shadow"
                   >
-                    <img src="img/bride.JPG" 
-                          alt="Bride" 
-                          loading="lazy" 
-                          class="card-photo shadow"
-                    >
-                  </a>
                   <div class="bride-text">
                     <h3>Rebecca Laurensia Diva</h3>
                     <p>
@@ -321,13 +314,14 @@
           </div>
         </form>
 
-        <div class="container py-5">
-          <h2 class="text-center mb-4">Ucapan dari Tamu Undangan</h2>
+        <div class="container py-5 col-md-8">
+          <!-- <h2 class="text-center mb-4">Ucapan dari Tamu Undangan</h2> -->
           <div id="wish-list" class="row justify-content-center">
             <div class="col-lg-8">
               <div class="text-center text-secondary py-4" id="loading">Memuat ucapan...</div>
             </div>
           </div>
+          <div id="pagination" class="mt-3 text-center"></div>
         </div>
       </div>
     </section>
@@ -604,22 +598,6 @@
       });
     </script>
 
-    <!-- Script Form RSVP -->
-    <script>
-      const form = document.getElementById("my-form");
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        const action = e.target.action;
-        fetch(action, {
-          method: "POST",
-          body: data,
-        }).then(() => {
-        
-        });
-      });
-    </script>
-
     <!-- Script Nama -->
     <script>
       const urlParams = new URLSearchParams(window.location.search);
@@ -635,6 +613,10 @@
     <script>
       const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6cTktfTKC5JIV0WCBLQTEjnw_PgebNS-OKzsefQa_mDlAHAB0wkQByrSCfAMBCC0mpR50NqzWHxh6/pub?gid=0&single=true&output=csv";
 
+      const itemsPerPage = 5; // jumlah ucapan per halaman
+      let wishesData = [];
+      let currentPage = 1;
+
       async function loadWishes() {
         try {
           const res = await fetch(sheetUrl);
@@ -646,33 +628,125 @@
           const msgIndex = header.indexOf('wishes');
           const dateIndex = header.indexOf('tanggal');
 
-          const container = document.getElementById('wish-list');
-          const loading = document.getElementById('loading');
-          loading.style.display = 'none';
+          wishesData = rows.slice(1)
+            .map(r => ({
+              name: r[nameIndex]?.trim(),
+              message: r[msgIndex]?.trim(),
+              date: dateIndex >= 0 ? r[dateIndex]?.trim() : ''
+            }))
+            .filter(w => w.name && w.message)
+            .reverse();
 
-          rows.slice(1).forEach(r => {
-            const name = r[nameIndex]?.trim();
-            const message = r[msgIndex]?.trim();
-            const date = dateIndex >= 0 ? r[dateIndex]?.trim() : '';
-
-            if (name && message) {
-              const card = document.createElement('div');
-              card.className = 'wish-card';
-              card.innerHTML = `
-                <div class="wish-name">${name}</div>
-                <div class="wish-message mt-1">“${message}”</div>
-                ${date ? `<div class="text-end text-muted small mt-2">${date}</div>` : ''}
-              `;
-              container.querySelector('.col-lg-8').appendChild(card);
-            }
-          });
+          document.getElementById('loading').style.display = 'none';
+          renderPage(currentPage);
         } catch (err) {
           console.error('Gagal mengambil data:', err);
           document.getElementById('loading').textContent = 'Gagal memuat ucapan 😢';
         }
       }
 
+      function renderPage(page) {
+        const container = document.getElementById('wish-list').querySelector('.col-lg-8');
+        container.innerHTML = '';
+
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageData = wishesData.slice(start, end);
+
+        pageData.forEach(({ name, message, date }) => {
+          const card = document.createElement('div');
+          card.className = 'wish-card border rounded p-3 mb-3';
+          card.innerHTML = `
+            <div class="wish-name fw-bold">${name}</div>
+            <div class="wish-message mt-1">“${message}”</div>
+            ${date ? `<div class="text-end text-muted small mt-2">${date}</div>` : ''}
+          `;
+          container.appendChild(card);
+        });
+
+        renderPagination();
+      }
+
+      function renderPagination() {
+        const totalPages = Math.ceil(wishesData.length / itemsPerPage);
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        // Tombol Prev
+        const prevBtn = document.createElement('button');
+        prevBtn.textContent = '⟨ Prev';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderPage(currentPage);
+          }
+        };
+        pagination.appendChild(prevBtn);
+
+        // Tombol angka halaman
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement('button');
+          btn.textContent = i;
+          if (i === currentPage) btn.classList.add('active');
+          btn.onclick = () => {
+            currentPage = i;
+            renderPage(currentPage);
+          };
+          pagination.appendChild(btn);
+        }
+
+        // Tombol Next
+        const nextBtn = document.createElement('button');
+        nextBtn.textContent = 'Next ⟩';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.onclick = () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderPage(currentPage);
+          }
+        };
+        pagination.appendChild(nextBtn);
+      }
+
+      const form = document.getElementById("my-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        const action = e.target.action;
+
+        // Tambahkan tanggal otomatis (jika kolom tanggal ada)
+        const now = new Date();
+        const dateStr = `${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}/${now.getFullYear()}`;
+        data.set('tanggal', dateStr);
+
+        fetch(action, {
+          method: "POST",
+          body: data,
+        }).then(() => {
+          // 🔹 Tambah langsung ke list (tanpa reload)
+          const newWish = {
+            name: data.get('name'),
+            message: data.get('wishes'),
+            date: dateStr,
+          };
+
+          // Masukkan ke awal array agar tampil di atas
+          wishesData.unshift(newWish);
+          renderPage(1); // tampilkan ulang halaman pertama
+          currentPage = 1;
+
+          // Reset form
+          form.reset();
+        });
+      });
+
       loadWishes();
+    </script>
+
+    <!-- Script Form RSVP -->
+    <script>
+      
     </script>
   </body>
 </html>

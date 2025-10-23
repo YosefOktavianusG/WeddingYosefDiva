@@ -319,6 +319,9 @@ body {
   border: 1px solid white;
 }
 
+#wish-list {
+  min-height: 800px;
+}
 .wish-card {
   border-radius: 1rem;
   background: white;
