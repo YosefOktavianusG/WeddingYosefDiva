@@ -319,15 +319,53 @@ body {
   border: 1px solid white;
 }
 
-.wish-list-container {
-  width: 100%;
-  background: #ffffffcc;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  border-radius: 16px;
-  padding: 20px;
+/* Guestbook entries */
+.guestbook-wrapper {
+  margin-top: 2rem;
   position: relative;
   overflow: hidden;
-  margin-top: 50px;
+}
+
+.guestbook-slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.guestbook-list {
+  min-width: 100%;
+  background: #fffdf8;
+  border: 2px solid #e3d8c5;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+  background-image: linear-gradient(to bottom, transparent 96%, rgba(176,139,109,0.1) 100%);
+  background-size: 100% 2.4em;
+}
+
+.guestbook-item {
+  padding: 8px 0;
+  border-bottom: 1px dashed #e5d9c9;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.guestbook-item:last-child { border-bottom: none; }
+
+.guestbook-item strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #b08b6d;
+  margin-bottom: 3px;
+}
+
+.guestbook-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .slider {
@@ -335,48 +373,25 @@ body {
   transition: transform 0.6s ease;
 }
 
-.wish-card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  transition: transform 0.5s ease;
-}
-
-.wish-card {
-  background: #fff;
-  border: 3px solid #f0e9e1;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
-  transform: rotate(var(--tilt, 0deg));
-  transition: transform 0.3s ease;
-  width: 310px;          /* 💡 lebar tetap */
-  height: 100px;         /* 💡 tinggi tetap */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.wish-card strong {
-  display: block;
-  margin-bottom: 8px;
+.guestbook-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8rem;
+  background: none;
+  border: none;
   color: #b08b6d;
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s;
 }
 
-.wish-card p {
-  font-size: 0.9rem;
-  color: #333;
-  line-height: 1.4;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.guestbook-arrow:hover {
+  color: #9a7253;
 }
 
-.wish-card:hover {
-  transform: rotate(0deg) scale(1.05);
-}
+.guestbook-arrow.left { left: -35px; }
+.guestbook-arrow.right { right: -35px; }
 
 /* Pagination Arrows */
 .arrow {
@@ -482,6 +497,13 @@ footer li {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

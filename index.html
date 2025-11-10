@@ -253,7 +253,7 @@
             <div class="col-12 col-md-6 mx-auto">
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" />
+                <input type="text" class="form-control" id="name" name="name" required/>
               </div>
             </div>
           </div>
@@ -262,7 +262,7 @@
             <div class="col-12 col-md-6 mx-auto">
               <div class="mb-3">
                 <label for="guest" class="form-label">Number Of Guest</label>
-                <select name="guest" id="guest" class="form-select">
+                <select name="guest" id="guest" class="form-select" required>
                   <option disabled selected hidden value="">Number Of Guest</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -275,7 +275,7 @@
             <div class="col-12 col-md-6 mx-auto">
               <div class="mb-3">
                 <label for="attendance" class="form-label">Confirmation Of Attendance</label>
-                <select name="attendance" id="attendance" class="form-select">
+                <select name="attendance" id="attendance" class="form-select" required>
                   <option disabled selected hidden value="">Confirmation Of Attendance</option>
                   <option value="Attend">Attend</option>
                   <option value="Not Attend">Not Attend</option>
@@ -288,7 +288,7 @@
             <div class="col-12 col-md-6 mx-auto">
               <div class="mb-3">
                 <label for="event" class="form-label">Event</label>
-                <select name="event" id="event" class="form-select">
+                <select name="event" id="event" class="form-select" required>
                   <option disabled selected hidden value="">Event</option>
                   <option value="Holy Matrimony">Holy Matrimony</option>
                   <option value="Reception">Reception</option>
@@ -302,7 +302,7 @@
             <div class="col-12 col-md-6 mx-auto">
               <div class="mb-3">
                 <label for="wishes" class="form-label">Write Your Wishes</label>
-                <textarea class="form-control" id="wishes" name="wishes" rows="5" maxlength="100"></textarea>
+                <textarea class="form-control" id="wishes" name="wishes" rows="5" maxlength="100" required></textarea>
               </div>
             </div>
           </div>
@@ -314,11 +314,20 @@
           </div>
         </form>
 
-        <div class="wish-list-container" id="wish-list-container">
-          <button class="arrow left" id="wishPrevBtn">&#10094;</button>
-          <div class="slider" id="slider"></div>
-          <button class="arrow right" id="wishNextBtn">&#10095;</button>
+        <div class="row">
+          <div class="col-12 col-md-6 mx-auto">
+            <div class="guestbook-wrapper">
+              <button class="guestbook-arrow left" id="guestbook-prevPage">&#10094;</button>
+
+              <div id="guestbook-slider" class="guestbook-slider">
+                <div id="guestbook-list" class="guestbook-list"></div>
+              </div>
+
+              <button class="guestbook-arrow right" id="guestbook-nextPage">&#10095;</button>
+            </div>
+          </div>
         </div>
+        
       </div>
     </section>
 
@@ -610,30 +619,25 @@
       const sheetId = "1L8Ks7R6SvDnjyhEA2O0P9OGCThVxAhdFFEC8O8trYG0";
       const apiKey = "AIzaSyB6i2k7Lg0WXvFpMX-Pr6iJu9lEWGSbLOQ";
       const sheetName = "Sheet1";
+      const itemsPerPage = 5;
 
-      // const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6cTktfTKC5JIV0WCBLQTEjnw_PgebNS-OKzsefQa_mDlAHAB0wkQByrSCfAMBCC0mpR50NqzWHxh6/pub?gid=0&single=true&output=csv";
-      // Data contoh ucapan
+      let currentPage = 0;
       let wishesData = [];
 
-      const slider = document.getElementById("slider");
-      const wishPrevBtn = document.getElementById("wishPrevBtn");
-      const wishNextBtn = document.getElementById("wishNextBtn");
-
-      const cardsPerPage = 5;
-      let currentPage = 0;
-      let totalPages = Math.ceil(wishesData.length / cardsPerPage);
-
-      async function loadWishes() {
+      async function fetchWishes() {
         try {
+          wishesData = [];
           const res = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`);
           const data = await res.json();
 
-          const header = data.values[0];
+          const rows = data.values;
+          if (!rows || rows.length < 2) return;
+
+          const header = rows[0];
           const nameIndex = header.indexOf('name');
           const msgIndex = header.indexOf('wishes');
-          const dateIndex = header.indexOf('tanggal');
 
-          wishesData = data.values.slice(1)
+          wishesData = rows.slice(1)
             .map(r => ({
               name: r[nameIndex]?.trim(),
               message: r[msgIndex]?.trim()
@@ -641,93 +645,132 @@
             .filter(w => w.name && w.message)
             .reverse();
 
-          totalPages = Math.ceil(wishesData.length / cardsPerPage);
-
-          if(wishesData.length > 0) {
-            // Buat semua halaman
-            for (let i = 0; i < totalPages; i++) {
-              const page = document.createElement("div");
-              page.classList.add("page");
-
-              const start = i * cardsPerPage;
-              const end = start + cardsPerPage;
-              const pageWishes = wishesData.slice(start, end);
-
-              pageWishes.forEach(wish => {
-                const card = document.createElement("div");
-                card.classList.add("wish-card");
-                card.style.setProperty("--tilt", `${(Math.random() * 10 - 5).toFixed(2)}deg`);
-                card.innerHTML = `<strong>${wish.name}</strong><p>${wish.message}</p>`;
-                page.appendChild(card);
-              });
-
-              slider.appendChild(page);
-            }
-          } else {
-            document.getElementById("wish-list-container").style.display = "none";
-          }
-
-          // renderPage(currentPage);
+          renderPages();
         } catch (err) {
           console.error('Gagal mengambil data:', err);
+          document.getElementById("guestbook-wrapper").style.display = "none";
         }
       }
 
-      // Fungsi render halaman
-      // function renderPage(page) {
-      //   container.innerHTML = "";
+      function renderPages() {
+        const slider = document.getElementById("guestbook-slider");
+        slider.innerHTML = "";
 
-      //   const start = page * cardsPerPage;
-      //   const end = start + cardsPerPage;
-      //   const pageItems = wishesData.slice(start, end);
+        const totalPages = Math.ceil(wishesData.length / itemsPerPage);
 
-      //   pageItems.forEach((wish, index) => {
-      //     const card = document.createElement("div");
-      //     card.classList.add("wish-card");
-      //     card.style.setProperty("--tilt", `${(Math.random() * 10 - 5).toFixed(2)}deg`);
-      //     card.innerHTML = `<strong>${wish.name}</strong><p>${wish.message}</p>`;
-      //     container.appendChild(card);
-      //   });
+        for (let i = 0; i < totalPages; i++) {
+          const page = document.createElement("div");
+          page.classList.add("guestbook-list");
 
-      //   wishPrevBtn.disabled = page === 0;
-      //   wishNextBtn.disabled = page === totalPages - 1;
-      // }
+          const start = i * itemsPerPage;
+          const end = start + itemsPerPage;
+          const pageData = wishesData.slice(start, end);
 
-      function updateSlider() {
-        slider.style.transform = `translateX(-${currentPage * 100}%)`;
-        wishPrevBtn.disabled = currentPage === 0;
-        wishNextBtn.disabled = currentPage === totalPages - 1;
+          pageData.forEach((wish, index) => {
+            const item = document.createElement("div");
+            item.classList.add("guestbook-item");
+            item.style.animationDelay = `${index * 0.1}s`;
+            item.innerHTML = `
+              <strong>${wish.name}</strong>
+              <p>${wish.message}</p>
+            `;
+            page.appendChild(item);
+          });
+
+          slider.appendChild(page);
+        }
       }
 
-      wishPrevBtn.addEventListener("click", () => {
-        if (currentPage > 0) {
-          currentPage--;
-          updateSlider();
-        }
-      });
+      function showPage(pageIndex) {
+        const slider = document.getElementById("guestbook-slider");
+        const totalPages = Math.ceil(wishesData.length / itemsPerPage);
+        if (pageIndex < 0 || pageIndex >= totalPages) return;
 
-      wishNextBtn.addEventListener("click", () => {
-        if (currentPage < totalPages - 1) {
-          currentPage++;
-          updateSlider();
-        }
-      });
+        currentPage = pageIndex;
+        slider.style.transform = `translateX(-${pageIndex * 100}%)`;
+      }
 
-      // Swipe support untuk mobile
-      let touchStartX = 0;
-      slider.addEventListener("touchstart", e => touchStartX = e.touches[0].clientX);
+      // Tombol navigasi
+      document.getElementById("guestbook-prevPage").addEventListener("click", () => showPage(currentPage - 1));
+      document.getElementById("guestbook-nextPage").addEventListener("click", () => showPage(currentPage + 1));
+
+      // Swipe gesture
+      let startX = 0;
+      const slider = document.getElementById("guestbook-slider");
+
+      slider.addEventListener("touchstart", e => startX = e.touches[0].clientX);
       slider.addEventListener("touchend", e => {
-        const diff = e.changedTouches[0].clientX - touchStartX;
-        if (diff > 50 && currentPage > 0) { currentPage--; updateSlider(); }
-        if (diff < -50 && currentPage < totalPages - 1) { currentPage++; updateSlider(); }
+        const endX = e.changedTouches[0].clientX;
+        const diff = endX - startX;
+        if (Math.abs(diff) > 50) {
+          if (diff < 0) showPage(currentPage + 1); // geser kiri → next
+          else showPage(currentPage - 1); // geser kanan → prev
+        }
+      });
+      
+      // SCRIPT RSVP
+      const form = document.getElementById("my-form");
+      const nameInput = document.getElementById("name");
+      const guestInput = document.getElementById("guest");
+      const attendanceInput = document.getElementById("attendance");
+      const eventInput = document.getElementById("event");
+      const messageInput = document.getElementById("wishes");
+
+      // Ganti URL ini dengan Web App URL dari Google Apps Script kamu
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwQUt1hFsYWMLcIM37CcEUWa_V0M4LvS_gfWTXqbKDqiEqFSfiRPcRBaYpJjswq_ro/exec";
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const newWishData = {
+          name: nameInput.value.trim(),
+          message: messageInput.value.trim()
+        }
+
+        // 2️⃣ Tambahkan ke data lokal
+        wishesData.unshift(newWishData); // tambah ke atas (karena urutan terbaru dulu)
+
+        renderPages();
+
+        const name = nameInput.value.trim();
+        const guest = guestInput.value.trim();
+        const attendance = attendanceInput.value.trim();
+        const event = eventInput.value.trim();
+        const wishes = messageInput.value.trim();
+        const newWish = { name, guest, attendance, event, wishes };
+
+        try {
+          // 1️⃣ Kirim ke Google Sheet
+          const res = await fetch(scriptURL, {
+            method: "POST",
+            body: new URLSearchParams(newWish),
+          });
+
+          if (!res.ok) throw new Error("Gagal kirim data");
+          
+          // 3️⃣ Update tampilan list
+          currentPage = 0;
+          fetchWishes(); // tampilkan halaman pertama lagi agar langsung kelihatan
+          
+          // 4️⃣ Reset form
+          form.reset();
+
+          // 5️⃣ Animasi ucapan baru
+          const firstItem = document.querySelector(".guestbook-item");
+          if (firstItem) {
+            firstItem.style.animation = "fadeIn 0.5s ease-out";
+          }
+
+        } catch (err) {
+          console.error(err);
+          alert("Terjadi kesalahan saat mengirim ucapan 😢");
+        }
       });
 
-      loadWishes();
+      fetchWishes();
     </script>
 
     <!-- Script Form RSVP -->
     <script>
-      
-    </script>
+      </script>
   </body>
 </html>
