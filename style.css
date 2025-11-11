@@ -390,8 +390,8 @@ body {
   color: #9a7253;
 }
 
-.guestbook-arrow.left { left: -35px; }
-.guestbook-arrow.right { right: -35px; }
+.guestbook-arrow.left { left: 0px; }
+.guestbook-arrow.right { right: 0px; }
 
 /* Pagination Arrows */
 .arrow {
