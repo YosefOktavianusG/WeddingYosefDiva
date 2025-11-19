@@ -1,0 +1,103 @@
+.groom-bride {
+    padding-top: 5rem;
+    padding-bottom: 8rem;
+}
+
+.groom-bride h2 {
+    color: var(--color-secondary);
+    font-family: "Alex Brush", cursive;
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.card-photo {
+    width: 100%;
+    height: 800px;
+    /* kamu bisa sesuaikan tinggi ini */
+    background: white;
+    border-radius: 10px;
+    transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0));
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0));
+    object-fit: cover;
+    /* pastikan gambar proporsional */
+}
+
+.shadow {
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgb(190, 190, 190),
+        0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.groom-text {
+    text-align: left;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    /* text-shadow: 0 0 5px rgba(0,0,0,0.8); */
+    z-index: 2;
+    /* pastikan di atas gambar */
+}
+
+.bride-text {
+    text-align: right;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    /* text-shadow: 0 0 5px rgba(0,0,0,0.8); */
+    z-index: 2;
+    /* pastikan di atas gambar */
+}
+
+.overlay-text h3 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.overlay-text p {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+}
+
+.groom-bride {
+    color: white;
+}
+
+.groom-bride h3 {
+    color: #444;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: "Montserrat";
+}
+
+.groom-bride p {
+    color: #555;
+    font-size: 1.1rem;
+    font-family: "Montserrat";
+}
+
+.groom-bride .couple {
+    margin-top: 50px;
+}
+
+.groom-bride .couple h3 {
+    color: var(--color-primary);
+    font-family: "Alex Brush", cursive;
+    font-size: 2.4rem;
+}
+
+.groom-bride .couple img {
+    width: 100%;
+}

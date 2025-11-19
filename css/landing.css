@@ -1,0 +1,59 @@
+.landing {
+    min-height: 100dvh;
+}
+
+.landing::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background-image: url(../img/landing-page-3.png);
+    background-size: cover;
+    background-position: center;
+    filter: contrast();
+    z-index: -1;
+}
+
+.landing h1,
+.landing h4,
+.landing p {
+    color: var(--color-primary);
+    text-shadow: var(--shadow);
+}
+
+.landing h1 {
+    font-family: "Alex Brush", cursive;
+    font-size: 6rem;
+}
+
+.landing h2 {
+    font-family: "Alex Brush", cursive;
+    font-size: 4rem;
+}
+
+.landing h4 {
+    font-size: 1.6rem;
+}
+
+.landing p {
+    font-size: 1.4rem;
+}
+
+.landing a {
+    color: var(--color-secondary);
+    background-color: white;
+    box-shadow: var(--shadow);
+}
+
+.landing a:hover {
+    color: white;
+    background-color: var(--color-secondary);
+}
+
+@supports (height: 100dvh) {
+    .landing {
+        height: 100dvh;
+    }
+}

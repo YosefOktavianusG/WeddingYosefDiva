@@ -1,0 +1,14 @@
+.home {
+    background-image:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, white 100%),
+        url(../img/gallery-x.JPG);
+    background-position: center;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+}
+
+.home h3 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-family: "Montserrat";
+}
