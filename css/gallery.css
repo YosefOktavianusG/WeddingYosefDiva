@@ -70,3 +70,25 @@
 .next-btn {
     right: 10px;
 }
+
+/* Media Query */
+/* Laptop */
+@media (max-width: 1366px) {
+    .gallery-container img {
+        width: 500px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .gallery-container img {
+        width: 400px;
+    }
+}
+
+/* Mobile Phone */
+@media (max-width: 480px) {
+    .gallery-container img {
+        width: 300px;
+    }
+}

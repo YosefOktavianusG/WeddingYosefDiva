@@ -49,3 +49,19 @@
     color: white;
     border: 1px solid var(--color-secondary);
 }
+
+/* Media Query */
+/* Laptop */
+@media (max-width: 1366px) {
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+}
+
+/* Mobile Phone */
+@media (max-width: 480px) {
+    .gifts img {
+        max-width: 75px;
+    }
+}

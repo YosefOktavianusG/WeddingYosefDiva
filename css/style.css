@@ -18,26 +18,6 @@ body {
     html {
         font-size: 75%;
     }
-
-    .groom-bride p {
-        color: #555;
-        font-size: 1.5rem;
-        font-family: "Montserrat";
-    }
-
-    .groom-bride .couple h3 {
-        color: var(--color-primary);
-        font-family: "Alex Brush", cursive;
-        font-size: 4rem;
-    }
-
-    .simply-countdown>.simply-section {
-        padding: 70px;
-    }
-
-    .gallery-container img {
-        width: 500px;
-    }
 }
 
 /* Tablet */
@@ -45,61 +25,15 @@ body {
     html {
         font-size: 65%;
     }
-
-    .groom-bride p {
-        color: #555;
-        font-size: 1.8rem;
-        font-family: "Montserrat";
-    }
-
-    .groom-bride .couple h3 {
-        color: var(--color-primary);
-        font-family: "Alex Brush", cursive;
-        font-size: 4.4rem;
-    }
-
-    .simply-countdown>.simply-section {
-        padding: 60px;
-        margin: 5px;
-    }
-
-    .gallery-container img {
-        width: 400px;
-    }
 }
 
 /* Mobile Phone */
-@media (max-width: 576px) {
+@media (max-width: 480px) {
     html {
         font-size: 60%;
     }
 
-    .groom-bride p {
-        color: #555;
-        font-size: 1.8rem;
-        font-family: "Montserrat";
-    }
-
-    .groom-bride .couple h3 {
-        color: var(--color-primary);
-        font-family: "Alex Brush", cursive;
-        font-size: 4.4rem;
-    }
-
-    .simply-countdown>.simply-section {
-        padding: 35px;
-        margin: 3px;
-    }
-
-    .gallery-container img {
-        width: 300px;
-    }
-
     #wish-list {
         min-height: 500px;
-    }
-
-    .gifts img {
-        max-width: 75px;
     }
 }

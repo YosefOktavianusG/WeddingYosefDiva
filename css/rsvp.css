@@ -161,3 +161,19 @@
     opacity: 0.4;
     cursor: not-allowed;
 }
+
+/* Media Query */
+/* Laptop */
+@media (max-width: 1366px) {
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+}
+
+/* Mobile Phone */
+@media (max-width: 480px) {
+    #wish-list {
+        min-height: 500px;
+    }
+}
