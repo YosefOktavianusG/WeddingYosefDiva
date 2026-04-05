@@ -5,9 +5,8 @@
 
 .gifts h2 {
     color: var(--color-secondary);
-    font-family: "Alex Brush", cursive;
+    font-family: "RTL-Adam Script", cursive;
     font-size: 5rem;
-    font-weight: bold;
 }
 
 .gifts span {
