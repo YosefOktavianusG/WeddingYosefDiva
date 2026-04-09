@@ -102,7 +102,7 @@
                                     <h3>Rebecca Laurensia Diva S.Psi</h3>
                                     <p>
                                         Eldest Daughter of<br />
-                                        Mr. James Subiyanto Halim <br />
+                                        Mr. James Soebiyanto Halim <br />
                                         & <br />
                                         Mrs. Eunike Listya Hastuti
                                     </p>
@@ -412,8 +412,6 @@
         // Daftar gambar
         const photos = [
             { src: 'img/gallery-1.JPG', thumb: 'img/gallery-1.JPG', subHtml: 'Foto 1' },
-            { src: 'img/gallery-2.JPG', thumb: 'img/gallery-2.JPG', subHtml: 'Foto 2' },
-            { src: 'img/gallery-3.JPG', thumb: 'img/gallery-3.JPG', subHtml: 'Foto 3' },
             { src: 'img/gallery-4.JPG', thumb: 'img/gallery-4.JPG', subHtml: 'Foto 4' },
             { src: 'img/gallery-5.JPG', thumb: 'img/gallery-5.JPG', subHtml: 'Foto 5' },
             { src: 'img/gallery-6.JPG', thumb: 'img/gallery-6.JPG', subHtml: 'Foto 6' },
@@ -427,11 +425,9 @@
             { src: 'img/gallery-14-a.jpg', thumb: 'img/gallery-14-a.jpg', subHtml: 'Foto 14' },
             { src: 'img/gallery-15-a.jpg', thumb: 'img/gallery-15-a.jpg', subHtml: 'Foto 15' },
             { src: 'img/gallery-16-a.jpg', thumb: 'img/gallery-16-a.jpg', subHtml: 'Foto 16' },
-            { src: 'img/gallery-17-a.jpg', thumb: 'img/gallery-17-a.jpg', subHtml: 'Foto 17' },
             { src: 'img/gallery-18-a.jpg', thumb: 'img/gallery-18-a.jpg', subHtml: 'Foto 18' },
             { src: 'img/gallery-19-a.jpg', thumb: 'img/gallery-19-a.jpg', subHtml: 'Foto 19' },
             { src: 'img/gallery-20-a.jpg', thumb: 'img/gallery-20-a.jpg', subHtml: 'Foto 20' },
-            { src: 'img/gallery-21-a.jpg', thumb: 'img/gallery-21-a.jpg', subHtml: 'Foto 21' },
             { src: 'img/gallery-22-a.jpg', thumb: 'img/gallery-22-a.jpg', subHtml: 'Foto 22' },
             { src: 'img/gallery-23-a.jpg', thumb: 'img/gallery-23-a.jpg', subHtml: 'Foto 23' },
             { src: 'img/gallery-24-a.jpg', thumb: 'img/gallery-24-a.jpg', subHtml: 'Foto 24' }
@@ -467,22 +463,22 @@
         nextBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             nextImage();
-            resetAutoSlide();
+            // resetAutoSlide();
         });
 
         prevBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             prevImage();
-            resetAutoSlide();
+            // resetAutoSlide();
         });
 
         // Auto-slide
-        let autoSlide = setInterval(nextImage, 3000);
+        // let autoSlide = setInterval(nextImage, 3000);
 
-        function resetAutoSlide() {
-            clearInterval(autoSlide);
-            autoSlide = setInterval(nextImage, 3000);
-        }
+        // function resetAutoSlide() {
+        //     clearInterval(autoSlide);
+        //     autoSlide = setInterval(nextImage, 3000);
+        // }
 
         let galleryInstance = null;
         mainLink.addEventListener('click', (e) => {
