@@ -1,7 +1,6 @@
 .rsvp {
     padding-top: 5rem;
     padding-bottom: 8rem;
-    background-color: var(--color-primary);
     font-family: "Montserrat";
 }
 
@@ -12,24 +11,17 @@
 }
 
 .rsvp p {
+    color: var(--color-primary);
     font-size: 1rem;
     font-weight: 300;
 }
 
-.rsvp h2 {
-    font-size: 4.5rem;
-}
-
-.rsvp p {
-    color: white;
-}
-
 .rsvp h5 {
-    color: white;
+    color: var(--color-primary);
 }
 
 .rsvp form label {
-    color: white;
+    color: var(--color-primary);
 }
 
 .rsvp button {
@@ -39,8 +31,8 @@
 }
 
 .rsvp button:hover {
-    background-color: white;
-    color: var(--color-secondary);
+    background-color: var(--color-primary);
+    color: white;
     border: 1px solid white;
 }
 
