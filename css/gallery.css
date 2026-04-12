@@ -90,7 +90,7 @@
 
 /* Mobile Phone */
 @media (max-width: 480px) {
-    .gallery::before {
+    .gallery {
         background-image: url(../img/background-portrait.jpg);
     }
 

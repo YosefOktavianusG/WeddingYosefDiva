@@ -64,7 +64,7 @@
 
 /* Mobile Phone */
 @media (max-width: 480px) {
-    .gifts::before {
+    .gifts {
         background-image: url(../img/background-portrait.jpg);
     }
 

@@ -1,9 +1,8 @@
 .rsvp {
     padding-top: 5rem;
     padding-bottom: 8rem;
-    font-family: "Montserrat";
     background-image: url(../img/background.jpg);
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     z-index: -1;
 }
@@ -160,6 +159,9 @@
 /* Media Query */
 /* Laptop */
 @media (max-width: 1366px) {
+    .rsvp {
+        background-image: url(../img/background.jpg);
+    }
 }
 
 /* Tablet */
