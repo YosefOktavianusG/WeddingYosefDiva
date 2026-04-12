@@ -1,6 +1,10 @@
 .gallery {
     padding-top: 5rem;
     padding-bottom: 8rem;
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 }
 
 .gallery h2 {
@@ -86,6 +90,10 @@
 
 /* Mobile Phone */
 @media (max-width: 480px) {
+    .gallery::before {
+        background-image: url(../img/background-portrait.jpg);
+    }
+
     .gallery-container img {
         width: 300px;
     }

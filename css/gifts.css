@@ -1,6 +1,10 @@
 .gifts {
     padding-top: 5rem;
     padding-bottom: 8rem;
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 }
 
 .gifts h2 {
@@ -60,6 +64,10 @@
 
 /* Mobile Phone */
 @media (max-width: 480px) {
+    .gifts::before {
+        background-image: url(../img/background-portrait.jpg);
+    }
+
     .gifts img {
         max-width: 75px;
     }

@@ -2,6 +2,10 @@
     padding-top: 5rem;
     padding-bottom: 8rem;
     font-family: "Montserrat";
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 }
 
 .rsvp h2 {
@@ -164,6 +168,10 @@
 
 /* Mobile Phone */
 @media (max-width: 480px) {
+    .rsvp {
+        background-image: url(../img/background-portrait.jpg);
+    }
+
     #wish-list {
         min-height: 500px;
     }

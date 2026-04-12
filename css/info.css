@@ -2,6 +2,10 @@
     padding-top: 5rem;
     padding-bottom: 8rem;
     color: var(--color-primary);
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 }
 
 .info h2 {
@@ -125,6 +129,10 @@
 
 /* Mobile Phone */
 @media (max-width: 480px) {
+    .info {
+        background-image: url(../img/background-portrait.jpg);
+    }
+
     .simply-countdown>.simply-section {
         padding: 35px;
         margin: 3px;
