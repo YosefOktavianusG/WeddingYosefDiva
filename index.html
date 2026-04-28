@@ -305,6 +305,16 @@
                 </div>
             </form>
 
+            <!-- MODAL -->
+            <div class="modal" id="successModal">
+                <div class="modal-content">
+                    <span class="close" id="closeBtn">&times;</span>
+                    <h4>Thank you 🙏</h4>
+                    <p id="modal-content-description">Your response has been successfully submitted. God Bless you</p>
+                    <button id="okBtn">OK</button>
+                </div>
+            </div>
+
             <div class="row slide-in-bottom-scroll">
                 <div class="col-12 col-md-6 mx-auto">
                     <div class="guestbook-wrapper" id="guestbook-wrapper">
@@ -711,12 +721,22 @@
         const attendanceInput = document.getElementById("attendance");
         const eventInput = document.getElementById("event");
         const messageInput = document.getElementById("wishes");
+        const modal = document.getElementById('successModal');
+        const modalContent = document.getElementById('modal-content-description');
+        const closeBtn = document.getElementById('closeBtn');
+        const okBtn = document.getElementById('okBtn');
 
         // Ganti URL ini dengan Web App URL dari Google Apps Script kamu
         const scriptURL = "https://script.google.com/macros/s/AKfycbwQUt1hFsYWMLcIM37CcEUWa_V0M4LvS_gfWTXqbKDqiEqFSfiRPcRBaYpJjswq_ro/exec";
-
+        
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
+            if(attendanceInput.value == "Attend") {
+                modalContent.innerHTML = "Your RSVP has been received. God Bless you";
+            } else {
+                modalContent.innerHTML = "Your response has been successfully submitted. God Bless you";
+            }
+            modal.style.display = 'flex';
             const newWishData = {
                 name: nameInput.value.trim(),
                 message: messageInput.value.trim()
@@ -755,12 +775,25 @@
                 if (firstItem) {
                     firstItem.style.animation = "fadeIn 0.5s ease-out";
                 }
-
             } catch (err) {
                 console.error(err);
                 alert("Terjadi kesalahan saat mengirim ucapan ðŸ˜¢");
             }
         });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        closeBtn.onclick = closeModal;
+        okBtn.onclick = closeModal;
+
+        // klik di luar modal → close
+        window.onclick = function(e) {
+            if (e.target === modal) {
+            closeModal();
+            }
+        }
 
         fetchWishes();
     </script>
