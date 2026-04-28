@@ -253,11 +253,11 @@
                 <div class="row slide-in-bottom-scroll">
                     <div class="col-12 col-md-6 mx-auto">
                         <div class="mb-3">
-                            <label for="guest" class="form-label">Number Of Guest</label>
-                            <select name="guest" id="guest" class="form-select">
-                                <option disabled selected hidden value="">Number Of Guest</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                            <label for="attendance" class="form-label">Confirmation Of Attendance</label>
+                            <select name="attendance" id="attendance" class="form-select" onchange="handleChange(this.value)" required>
+                                <option disabled selected hidden value="">Confirmation Of Attendance</option>
+                                <option value="Attend">Attend</option>
+                                <option value="Not Attend">Not Attend</option>
                             </select>
                         </div>
                     </div>
@@ -266,11 +266,11 @@
                 <div class="row slide-in-bottom-scroll">
                     <div class="col-12 col-md-6 mx-auto">
                         <div class="mb-3">
-                            <label for="attendance" class="form-label">Confirmation Of Attendance</label>
-                            <select name="attendance" id="attendance" class="form-select" required>
-                                <option disabled selected hidden value="">Confirmation Of Attendance</option>
-                                <option value="Attend">Attend</option>
-                                <option value="Not Attend">Not Attend</option>
+                            <label for="guest" class="form-label">Number Of Guest</label>
+                            <select name="guest" id="guest" class="form-select">
+                                <option disabled selected hidden value="">Number Of Guest</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
                         </div>
                     </div>
@@ -744,7 +744,9 @@
             }
 
             // 2ï¸âƒ£ Tambahkan ke data lokal
-            wishesData.unshift(newWishData); // tambah ke atas (karena urutan terbaru dulu)
+            if(messageInput.value.trim() != ""){
+                wishesData.unshift(newWishData); // tambah ke atas (karena urutan terbaru dulu)
+            }
 
             renderPages();
 
@@ -814,6 +816,22 @@
             });
         }, {threshold: 0.2});
         animatedElements.forEach(el => observer.observe(el));
+    </script>
+
+    <script>
+        function handleChange(value) {
+            const selectGuest = document.getElementById('guest');
+            const selectEvent = document.getElementById('event');
+            if (value === 'Attend') {
+                selectGuest.required = true;
+                selectEvent.required = true;
+            } else {
+                selectGuest.required = false;
+                selectEvent.required = false;
+                selectGuest.selectedIndex = 0;
+                selectEvent.selectedIndex = 0;
+            }
+        }
     </script>
 </body>
 
