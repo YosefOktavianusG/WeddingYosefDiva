@@ -253,7 +253,7 @@
                     <div class="col-12 col-md-6 mx-auto">
                         <div class="mb-3">
                             <label for="guest" class="form-label">Number Of Guest</label>
-                            <select name="guest" id="guest" class="form-select" required>
+                            <select name="guest" id="guest" class="form-select">
                                 <option disabled selected hidden value="">Number Of Guest</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -279,7 +279,7 @@
                     <div class="col-12 col-md-6 mx-auto">
                         <div class="mb-3">
                             <label for="event" class="form-label">Event</label>
-                            <select name="event" id="event" class="form-select" required>
+                            <select name="event" id="event" class="form-select">
                                 <option disabled selected hidden value="">Event</option>
                                 <option value="Holy Matrimony">Holy Matrimony</option>
                                 <option value="Reception">Reception</option>
@@ -293,8 +293,7 @@
                     <div class="col-12 col-md-6 mx-auto">
                         <div class="mb-3">
                             <label for="wishes" class="form-label">Write Your Wishes</label>
-                            <textarea class="form-control" id="wishes" name="wishes" rows="5" maxlength="100"
-                                required></textarea>
+                            <textarea class="form-control" id="wishes" name="wishes" rows="5" maxlength="100"></textarea>
                         </div>
                     </div>
                 </div>
@@ -662,14 +661,16 @@
                 const pageData = wishesData.slice(start, end);
 
                 pageData.forEach((wish, index) => {
-                    const item = document.createElement("div");
-                    item.classList.add("guestbook-item");
-                    item.style.animationDelay = `${index * 0.1}s`;
-                    item.innerHTML = `
-              <strong>${wish.name}</strong>
-              <p>${wish.message}</p>
-            `;
-                    page.appendChild(item);
+                    if(wish.message != "") {
+                        const item = document.createElement("div");
+                        item.classList.add("guestbook-item");
+                        item.style.animationDelay = `${index * 0.1}s`;
+                        item.innerHTML = `
+                            <strong>${wish.name}</strong>
+                            <p>${wish.message}</p>
+                            `;
+                        page.appendChild(item);
+                    }
                 });
 
                 slider.appendChild(page);
